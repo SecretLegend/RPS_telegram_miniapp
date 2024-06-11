@@ -2,6 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import { Server } from "socket.io";
+import bot from './bot'
 
 const app = express();
 
@@ -21,6 +22,8 @@ const server = app.listen(PORT);
 const io = new Server(server);
 
 let room = [];
+
+bot.launch()
 
 io.on("connection", (socket) => {
   console.log("client connected");
