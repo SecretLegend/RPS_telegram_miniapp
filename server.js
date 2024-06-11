@@ -14,7 +14,7 @@ app.use(express.static(path.join(__dirname, "view")));
 app.use(express.static(path.join(__dirname, "images")));
 
 app.get("/", (req, res, next) => {
-  res.sendFile("index.html");
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 const server = app.listen(PORT);
