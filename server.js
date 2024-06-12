@@ -2,7 +2,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import { Server } from "socket.io";
-import bot from './bot'
+import bot from './bot.js'
 
 const app = express();
 
