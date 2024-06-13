@@ -26,9 +26,9 @@ bot.command('start', ctx => {
   })
 });
 
-bot.on('inline_query', async({inlineQuery, answerInlineQuery}) => {
-    console.log(inlineQuery)
-    const results = {
+bot.on('inline_query', async(ctx) => {
+    console.log(ctx.inlineQuery)
+    const results = [{
         type: 'article',
         id: 'newgame',
         title: 'New Game',
@@ -41,11 +41,11 @@ bot.on('inline_query', async({inlineQuery, answerInlineQuery}) => {
         reply_markup: {
             inline_keyboard: [[{ text: 'Wait'}]],
         },
-    }
+    }]
 
     console.log('Results', results)
 
-    await answerInlineQuery(results, {
+    await ctx.answerInlineQuery(results, {
         button: {
             web_app: {
                 url: process.env.HOST_URL
