@@ -39,13 +39,19 @@ bot.on('inline_query', async({inlineQuery, answerInlineQuery}) => {
             parse_mode: "Markdown",
         },
         reply_markup: {
-            inline_keyboard: [{ text: 'Wait'}],
+            inline_keyboard: [[{ text: 'Wait'}]],
         },
     }
 
     console.log('Results', results)
 
     await answerInlineQuery(results, {
+        button: {
+            web_app: {
+                url: process.env.HOST_URL
+            },
+            text: 'New Game'
+        },
         cache_time: 0
     })
 })
