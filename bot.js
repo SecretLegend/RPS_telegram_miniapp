@@ -43,6 +43,8 @@ bot.on('inline_query', async({inlineQuery, answerInlineQuery}) => {
         },
     }
 
+    console.log('Results', results)
+
     await answerInlineQuery(results, {
         cache_time: 0
     })
