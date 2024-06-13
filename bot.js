@@ -1,5 +1,6 @@
 
 import { Telegraf, Markup, Context } from "telegraf";
+
 console.log("Token:", process.env.TELEGRAM_BOT_TOKEN)
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN || "");
 
@@ -27,7 +28,6 @@ bot.command('start', ctx => {
 });
 
 bot.on('inline_query', async(ctx) => {
-    console.log(ctx.inlineQuery)
     const results = [{
         type: 'article',
         id: 'newgame',
@@ -43,8 +43,6 @@ bot.on('inline_query', async(ctx) => {
         },
     }]
 
-    console.log('Results', results)
-
     await ctx.answerInlineQuery(results, {
         button: {
             web_app: {
@@ -54,6 +52,18 @@ bot.on('inline_query', async(ctx) => {
         },
         cache_time: 0
     })
+})
+
+bot.on('chosen_inline_result', async(ctx) => {
+    const roomID = Array.from({ length: 5 }, () => Math.floor(Math.random() * 10)).join('');
+    createRoom(roomID)
+    const messageID = ctx.chosenInlineResult.inline_message_id;
+    await ctx.telegram.sendMessage(fromId, `Room created with ID: ${roomID}, Please join to start a game`, {
+        parse_mode: "Markdown",
+        reply_markup: {
+            inline_keyboard: [[{text: 'Join', web_app: process.env.HOST_URL}]]
+        }
+    });
 })
 
 export default bot;
