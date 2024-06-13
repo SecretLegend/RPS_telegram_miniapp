@@ -39,7 +39,7 @@ bot.on('inline_query', async(ctx) => {
             parse_mode: "Markdown",
         },
         reply_markup: {
-            inline_keyboard: [[{ text: 'Wait'}]],
+            inline_keyboard: [[{ text: 'Wait', callback_data: 'wait_action'}]],
         },
     }]
 
