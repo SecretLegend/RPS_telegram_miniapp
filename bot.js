@@ -56,6 +56,7 @@ bot.on('inline_query', async(ctx) => {
 
 bot.on('chosen_inline_result', async(ctx) => {
     const roomID = Array.from({ length: 5 }, () => Math.floor(Math.random() * 10)).join('');
+    const fromId = ctx.chosenInlineResult.from.id;
     createRoom(roomID)
     const messageID = ctx.chosenInlineResult.inline_message_id;
     await ctx.telegram.sendMessage(fromId, `Room created with ID: ${roomID}, Please join to start a game`, {
