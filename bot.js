@@ -1,6 +1,5 @@
 
 import { Telegraf, Markup, Context } from "telegraf";
-
 console.log("Token:", process.env.TELEGRAM_BOT_TOKEN)
 const bot = new Telegraf(process.env.TELEGRAM_BOT_TOKEN || "");
 
@@ -26,5 +25,27 @@ bot.command('start', ctx => {
     },
   })
 });
+
+bot.on('inline_query', async({inlineQuery, answerInlineQuery}) => {
+    console.log(inlineQuery)
+    const results = {
+        type: 'article',
+        id: 'newgame',
+        title: 'New Game',
+        description: 'Send invitation to start a game with opponent',
+        thumbnail_url: process.env.HOST_URL + 'thumbnail.jpeg',
+        input_message_content: {
+            message_text: 'Creating a gaming session.\n\n_Please wait a moment..._',
+            parse_mode: "Markdown",
+        },
+        reply_markup: {
+            inline_keyboard: [{ text: 'Wait'}],
+        },
+    }
+
+    await answerInlineQuery(results, {
+        cache_time: 0
+    })
+})
 
 export default bot;
