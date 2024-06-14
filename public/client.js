@@ -293,20 +293,20 @@ const returnToLogin = () => {
 
 const exitGame =  () => {
   socket.emit('exitGame', {roomID : roomID, player : player1});
-  returnToLogin();
+  // returnToLogin();
 };
 
 socket.on('player1Left', () => {
   if(!player1){
     alert('player 1 left')
-    returnToLogin();
+    // returnToLogin();
   }
 })
 
 socket.on('player2Left', () => {
   if(player1){
     alert('player 2 left')
-    returnToLogin();
+    // returnToLogin();
   }
 })
 
