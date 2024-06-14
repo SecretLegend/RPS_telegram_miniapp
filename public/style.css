@@ -87,7 +87,6 @@ body {
 
 /* display grid */
 .main {
-  display: none;
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
     "paper scissor"
