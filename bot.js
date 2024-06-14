@@ -59,7 +59,7 @@ bot.on('chosen_inline_result', async(ctx) => {
     const fromId = ctx.chosenInlineResult.from.id;
     createRoom(roomID)
     const messageID = ctx.chosenInlineResult.inline_message_id;
-    await ctx.telegram.sendMessage(fromId, `Room created with ID: ${roomID}, Please join to start a game`, {
+    await ctx.telegram.editMessageText(undefined, undefined, messageID, `Room created with ID: ${roomID}, Please join to start a game`, {
         parse_mode: "Markdown",
         reply_markup: {
             inline_keyboard: [[{text: 'Join', web_app: { url: process.env.HOST_URL }}]]
