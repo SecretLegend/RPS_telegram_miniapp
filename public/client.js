@@ -121,7 +121,7 @@ const clickChoice = (rpschoice) => {
     player = "p2Choice";
   }
 
-  gameArea.classList.add("none");
+  // gameArea.classList.add("none");
   resultBoard.classList.add("grid");
   if (rpschoice == "rock") {
     yourChoice.innerHTML = rockChoice;
