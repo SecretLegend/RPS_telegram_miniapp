@@ -45,6 +45,8 @@ function joinRoom(socket, roomID) {
     return socket.emit("Not a ValidToken");
   }
 
+  console.log("Joined room to ", roomID);
+
   const roomSize = io.sockets.adapter.rooms.get(roomID).size;
   if (roomSize > 1) {
     return socket.emit("roomFull");
@@ -55,6 +57,7 @@ function joinRoom(socket, roomID) {
 
   socket.to(roomID).emit("playersConnected");
   socket.emit("playersConnected");
+  console.log("Players connected");
 }
 
 export { createRoom, joinRoom };
