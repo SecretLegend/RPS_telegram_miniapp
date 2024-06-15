@@ -17,7 +17,7 @@ app.use(express.static(path.join(__dirname, "images")));
 app.get("/", (req, res, next) => {
   res.sendFile(path.join(__dirname, "index.html"));
   console.log(req.query)
-  roomID = req.query.startapp;
+  roomID = req.query.tgWebAppStartParam;
   if ( roomID ) {
     joinRoom(socket, roomID)
   }
