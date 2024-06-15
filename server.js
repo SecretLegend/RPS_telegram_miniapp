@@ -89,6 +89,8 @@ io.on("connection", (socket) => {
     if (data) {
       const choice = data.rpschoice;
       const roomID = data.roomID;
+      alert('Room ID: ', roomID);
+      alert(room[roomID]);
       room[roomID].p1Choice = choice;
       socket
         .to(roomID)
