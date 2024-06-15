@@ -44,16 +44,16 @@ body {
   align-items: center;
   justify-content: space-between;
   max-width: 700px;
-  height: 150px;
-  padding: 1rem 2rem;
+  height: 100px;
+  padding: 0.5rem 3rem;
   border: 3px solid var(--header-outline);
   border-radius: 20px;
   margin: auto;
 }
 
 .score {
-  height: 100%;
-  width: 150px;
+  height: 80%;
+  width: 80px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -65,7 +65,7 @@ body {
 
 .score__title {
   color: var(--score-text);
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   text-transform: uppercase;
   letter-spacing: 2px;
   font-weight: 600;
@@ -73,7 +73,7 @@ body {
 
 .score__number {
   color: #333;
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 600;
 }
 
@@ -92,19 +92,21 @@ body {
   grid-template-areas:
     "paper scissor"
     "rock rock";
-  height: 30rem;
+  height: 25rem;
   padding-top: 2rem;
   place-items: center;
+  overflow: hidden;
 }
 
 .main::before {
   content: "";
   position: absolute;
-  height: 100%;
-  width: 100%;
+  height: 83%;
+  width: 99%;
   top: 30%;
-  left: 28%;
+  left: 18%;
   background: url("/bg-triangle.svg") no-repeat;
+  background-size: 65% 220px;
   z-index: -1;
 }
 
@@ -116,7 +118,7 @@ body {
 .choice__paper,
 .choice__scissor,
 .choice__rock {
-  height: 180px;
+  height: 120px;
   aspect-ratio: 1/1;
   border-radius: 100%;
   cursor: pointer;
@@ -125,21 +127,21 @@ body {
 .choice__paper {
   grid-area: "paper";
   border-radius: 100%;
-  border: 20px solid var(--to-paper);
+  border: 10px solid var(--to-paper);
   box-shadow: -1px 10px var(--shadow-dark), -1px 10px var(--from-paper);
 }
 
 .choice__rock {
   grid-area: rock;
   border-radius: 100%;
-  border: 20px solid var(--to-rock);
+  border: 10px solid var(--to-rock);
   box-shadow: -1px 10px var(--shadow-dark), -1px 10px var(--from-rock);
 }
 
 .choice__scissor {
   grid-area: "scissor";
   border-radius: 100%;
-  border: 20px solid var(--to-scissor);
+  border: 10px solid var(--to-scissor);
   box-shadow: -1px 10px var(--shadow-dark), -1px 10px var(--from-scissor);
 }
 
@@ -261,18 +263,18 @@ body {
 /* display grid*/
 .result__board {
   position: absolute;
-  top: 50%;
+  top: 45%;
   left: 50%;
   transform: translate(-50%, -50%);
   display: none;
   place-items: center;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
-    "your-text .  oppo-text"
-    "your-choice . oppo-choice";
+    "your-text oppo-text"
+    "your-choice oppo-choice";
   height: fit-content;
-  gap: 6rem;
-  max-width: 1000px;
+  gap: 1rem;
+  width: 100%;
   margin: 2.5rem auto;
 }
 
@@ -296,7 +298,7 @@ body {
 
 /* Place holder for waiting  */
 .waiting_to_chose {
-  height: 12rem;
+  height: 8rem;
   aspect-ratio: 1/1;
   background-color: var(--bg-dark);
   border-radius: 50%;
@@ -304,15 +306,16 @@ body {
 
 /* Increase size after choosing */
 .increase-size {
-  scale: 1.5;
+  scale: 1;
 }
 
 /*result grid after both players choice*/
 .after-choosing {
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
-    "your-text results oppo-text"
-    "your-choice results oppo-choice";
+    "your-text oppo-text"
+    "your-choice oppo-choice"
+    "results results";
   margin: 3rem auto;
 }
 
@@ -326,28 +329,31 @@ body {
 .results__heading {
   display: block;
   text-align: center;
-  font-size: 2.5rem;
+  font-size: 2rem;
   text-transform: uppercase;
-  letter-spacing: 0.5rem;
+  letter-spacing: 0.15rem;
   padding-bottom: 1.5rem;
+  padding-top: 2rem;
 }
 
 .results__button {
   display: block;
   background-color: #fff;
-  padding: 0.6rem 3.5rem;
+  padding: 1rem 1rem;
   border-radius: 10px;
   text-transform: uppercase;
-  font-size: 0.8rem;
+  font-size: 1rem;
   letter-spacing: 0.2rem;
   cursor: pointer;
   border: none;
+  width: 100%;
 }
 
 .result__board > * {
   color: #fff;
   letter-spacing: 0.1rem;
   font-weight: 600;
+  font-size: larger;
 }
 
 .join {
@@ -359,14 +365,19 @@ body {
   height: 100%;
   width: 100%;
   background-image: radial-gradient(at top, #1f3656, #172041);
+  padding: 1rem;
 }
 
 .join__container {
   height: auto;
-  padding: 2rem;
-  margin: auto;
+  padding: 4rem 2rem;
   border-radius: 0.8rem;
   border: 2px solid var(--dark-text);
+  text-align: center;
+  width: 100%;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .join__options > * {
@@ -417,3 +428,7 @@ body {
   display: block;
 }
 
+.waiting__player {
+  color: #fff;
+  letter-spacing: 0.1rem;
+}

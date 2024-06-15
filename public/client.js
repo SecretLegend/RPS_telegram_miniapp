@@ -83,7 +83,6 @@ const socket = io.connect( "https://busy-clareta-ultrashiny-9e6e3029.koyeb.app/"
 window.addEventListener("load", function() {
   const queryParams = new URLSearchParams(window.location.search);
   roomID = queryParams.get('tgWebAppStartParam');
-  alert(roomID)
   if (roomID) {
     joinRoom(roomID);
   }
@@ -93,7 +92,6 @@ const createRoom = () => {
   player1 = true;
   roomID = Math.random().toString(36);
   socket.emit("createRoom", roomID);
-  alert(`${roomID}`);
 };
 
 const joinRoom = (roomID) => {
@@ -116,12 +114,10 @@ const joinRoom = (roomID) => {
 };
 
 socket.on("firstPlayer", () => {
-  alert('First Player');
   player1 = true;
 })
 
 socket.on("playersConnected", () => {
-  alert('Players Connected');
   joinPage.classList.add("none");
   header.classList.add("flex");
   gameArea.classList.add("grid");
@@ -131,10 +127,8 @@ socket.on("playersConnected", () => {
 const clickChoice = (rpschoice) => {
   let player;
   if (player1 == true) {
-    alert('p1Choice');
     player = "p1Choice";
   } else if (player1 == false) {
-    alert('p2Choice');
     player = "p2Choice";
   }
 
