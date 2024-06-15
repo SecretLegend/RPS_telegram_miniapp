@@ -70,6 +70,12 @@ closeRules.addEventListener("click", () => {
   rulesBoard.classList.toggle("show__rules_board");
 });
 
+window.addEventListener("load", () => {
+  console.log('Web app loaded');
+  console.log(window.location.href);
+  joinRoom()
+})
+
 let roomID;
 let player1 = false;
 let winner;
