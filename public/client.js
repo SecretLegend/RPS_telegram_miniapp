@@ -219,6 +219,8 @@ socket.on("winner", data => {
       resultButton.style.color = "#0D9276";
       yourChoice.classList.add("winner");
       player1Score = player1Score + 1;
+      alert(player1Score);
+      alert(player2Score);
       updateScore(player1Score, player2Score) 
     } else {
       resultsHeading.innerText = "YOU LOSE";
