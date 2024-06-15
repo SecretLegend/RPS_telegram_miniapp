@@ -219,8 +219,6 @@ socket.on("winner", data => {
       resultButton.style.color = "#0D9276";
       yourChoice.classList.add("winner");
       player1Score = player1Score + 1;
-      alert(player1Score);
-      alert(player2Score);
       updateScore(player1Score, player2Score) 
     } else {
       resultsHeading.innerText = "YOU LOSE";
@@ -247,8 +245,8 @@ socket.on("winner", data => {
 });
 
 const returnToGame = () => {
-  player1Score = 0;
-  player2Score = 0;
+  // player1Score = 0;
+  // player2Score = 0;
   resultBoard.classList.remove("grid");
   resultBoard.classList.add("none");
   resultBoard.classList.remove("after-choosing");
