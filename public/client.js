@@ -72,8 +72,11 @@ closeRules.addEventListener("click", () => {
 
 window.addEventListener("load", () => {
   console.log('Web app loaded');
-  console.log(window.location.href);
-  joinRoom()
+  const queryParams = new URLSearchParams(window.location.search);
+  const roomID = queryParams.get('startapp');
+  if (roomID) {
+    joinRoom(roomID);
+  }
 })
 
 let roomID;
@@ -93,8 +96,8 @@ const createRoom = () => {
   alert(`${roomID}`);
 };
 
-const joinRoom = () => {
-  roomID = roomId.value;
+const joinRoom = (roomID) => {
+  // roomID = roomId.value;
   if (!roomID) {
     alert("Room Token is Required ");
     return joinPage.classList.add('flex');
