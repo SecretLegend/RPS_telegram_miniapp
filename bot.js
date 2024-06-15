@@ -44,12 +44,6 @@ bot.on('inline_query', async(ctx) => {
     }]
 
     await ctx.answerInlineQuery(results, {
-        button: {
-            web_app: {
-                url: process.env.HOST_URL
-            },
-            text: 'New Game'
-        },
         cache_time: 0
     })
 })
