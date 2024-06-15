@@ -36,8 +36,8 @@ bot.launch()
 function createRoom(socket, roomID) {
   room[roomID] = { p1Choice: null, p1Score: 0 };
   console.log("Room created");
-  socket.join(roomID);
-  socket.to(roomID).emit("playersConnected", { roomID: roomID });
+  // socket.join(roomID);
+  // socket.to(roomID).emit("playersConnected", { roomID: roomID });
 }
 
 function joinRoom(socket, roomID) {
@@ -47,18 +47,26 @@ function joinRoom(socket, roomID) {
   // }
 
   console.log("Joined room to ", roomID);
-
-  const roomSize = io.sockets.adapter.rooms.get(roomID).size;
-  if (roomSize > 1) {
-    return socket.emit("roomFull");
+  if (!io.sockets.adapter.rooms.has(roomID)) {
+    socket.join(roomID)
+    room[roomID] = { p1Choice: null, p1Score: 0 };
+    socket.to(roomID).emit("playersConnected");
   }
 
-  socket.join(roomID);
-  room[roomID] = { p2Choice: null };
+  else {
+    const roomSize = io.sockets.adapter.rooms.get(roomID).size;
+    if (roomSize > 1) {
+      return socket.emit("roomFull");
+    }
+  
+    socket.join(roomID);
+    room[roomID] = { p2Choice: null };
+  
+    socket.to(roomID).emit("playersConnected");
+    socket.emit("playersConnected");
+    console.log("Players connected");
+  }
 
-  socket.to(roomID).emit("playersConnected");
-  socket.emit("playersConnected");
-  console.log("Players connected");
 }
 
 export { createRoom, joinRoom };
