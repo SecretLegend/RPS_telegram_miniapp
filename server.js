@@ -41,9 +41,10 @@ function createRoom(socket, roomID) {
 }
 
 function joinRoom(socket, roomID) {
-  if (!io.sockets.adapter.rooms.has(roomID)) {
-    return socket.emit("Not a ValidToken");
-  }
+
+  // if (!io.sockets.adapter.rooms.has(roomID)) {
+  //   return socket.emit("Not a ValidToken");
+  // }
 
   console.log("Joined room to ", roomID);
 

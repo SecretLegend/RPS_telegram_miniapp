@@ -71,11 +71,8 @@ closeRules.addEventListener("click", () => {
 });
 
 window.addEventListener("load", () => {
-  console.log('Web app loaded');
-  // alert(window.location.href);
   const queryParams = new URLSearchParams(window.location.search);
   const roomID = queryParams.get('tgWebAppStartParam');
-  alert(roomID);
   if (roomID) {
     joinRoom(roomID);
   }
@@ -113,8 +110,6 @@ const joinRoom = (roomID) => {
     alert('Max player reached !');
     return joinPage.classList.add('flex');
   })
-
-  alert('Room ID: ' + roomID);
 
   socket.emit("joinRoom", roomID);
 };
