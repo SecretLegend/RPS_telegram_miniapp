@@ -80,9 +80,10 @@ let player2Score = 0;
 // const socket = io.connect( "https://rock-paper-scissor-six-gamma.vercel.app/", { secure: true, transports: [ "flashsocket","polling","websocket" ] } );
 const socket = io.connect( "https://busy-clareta-ultrashiny-9e6e3029.koyeb.app/", { secure: true, transports: [ "flashsocket","polling","websocket" ] } );
 
-window.addEventListener("load", () => {
+window.addEventListener("load", function() {
   const queryParams = new URLSearchParams(window.location.search);
-  const roomID = queryParams.get('tgWebAppStartParam');
+  roomID = queryParams.get('tgWebAppStartParam');
+  alert(roomID)
   if (roomID) {
     joinRoom(roomID);
   }

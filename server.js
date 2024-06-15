@@ -86,6 +86,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("p1Choice", (data) => {
+    console.log(data);
     if (data) {
       const choice = data.rpschoice;
       const roomID = data.roomID;
