@@ -74,6 +74,7 @@ io.on("connection", (socket) => {
   });
 
   socket.on("joinRoom", (roomID) => {
+    console.log("Joined Room");
     joinRoom(socket, roomID);
   });
 

@@ -74,6 +74,7 @@ window.addEventListener("load", () => {
   console.log('Web app loaded');
   const queryParams = new URLSearchParams(window.location.search);
   const roomID = queryParams.get('startapp');
+  alert(roomID);
   if (roomID) {
     joinRoom(roomID);
   }
@@ -111,6 +112,8 @@ const joinRoom = (roomID) => {
     alert('Max player reached !');
     return joinPage.classList.add('flex');
   })
+
+  alert('Room ID: ' + roomID);
 
   socket.emit("joinRoom", roomID);
 };
