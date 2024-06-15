@@ -115,6 +115,7 @@ const joinRoom = (roomID) => {
 };
 
 socket.on("playersConnected", () => {
+  alert('Players Connected');
   joinPage.classList.add("none");
   header.classList.add("flex");
   gameArea.classList.add("grid");
@@ -129,7 +130,7 @@ const clickChoice = (rpschoice) => {
     player = "p2Choice";
   }
 
-  // gameArea.classList.add("none");
+  gameArea.classList.add("none");
   resultBoard.classList.add("grid");
   if (rpschoice == "rock") {
     yourChoice.innerHTML = rockChoice;

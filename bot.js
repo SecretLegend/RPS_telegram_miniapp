@@ -51,7 +51,7 @@ bot.on('inline_query', async(ctx) => {
 bot.on('chosen_inline_result', async(ctx) => {
     const roomID = Array.from({ length: 5 }, () => Math.floor(Math.random() * 10)).join('');
     const fromId = ctx.chosenInlineResult.from.id;
-    createRoom(roomID)
+    // createRoom(roomID)
     const messageID = ctx.chosenInlineResult.inline_message_id;
     const gameName = "rps_game"
     const gameUrl = `https://t.me/${bot.botInfo.username}/${gameName}?startapp=${roomID}`;
