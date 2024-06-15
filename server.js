@@ -16,14 +16,14 @@ app.use(express.static(path.join(__dirname, "images")));
 
 app.get("/", (req, res, next) => {
   res.sendFile(path.join(__dirname, "index.html"));
-  console.log(req.query)
-  let roomID = req.query.tgWebAppStartParam;
-  if ( roomID ) {
-    joinRoom(socket, roomID)
-  }
-  else {
-    console.log('This room is not available!')
-  }
+  // console.log(req.query)
+  // let roomID = req.query.tgWebAppStartParam;
+  // if ( roomID ) {
+  //   joinRoom(socket, roomID)
+  // }
+  // else {
+  //   console.log('This room is not available!')
+  // }
 });
 
 const server = app.listen(PORT);
