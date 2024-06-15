@@ -70,14 +70,6 @@ closeRules.addEventListener("click", () => {
   rulesBoard.classList.toggle("show__rules_board");
 });
 
-window.addEventListener("load", () => {
-  const queryParams = new URLSearchParams(window.location.search);
-  const roomID = queryParams.get('tgWebAppStartParam');
-  if (roomID) {
-    joinRoom(roomID);
-  }
-})
-
 let roomID;
 let player1 = false;
 let winner;
@@ -87,6 +79,14 @@ let player2Score = 0;
 ///Socket
 // const socket = io.connect( "https://rock-paper-scissor-six-gamma.vercel.app/", { secure: true, transports: [ "flashsocket","polling","websocket" ] } );
 const socket = io.connect( "https://busy-clareta-ultrashiny-9e6e3029.koyeb.app/", { secure: true, transports: [ "flashsocket","polling","websocket" ] } );
+
+window.addEventListener("load", () => {
+  const queryParams = new URLSearchParams(window.location.search);
+  const roomID = queryParams.get('tgWebAppStartParam');
+  if (roomID) {
+    joinRoom(roomID);
+  }
+})
 
 const createRoom = () => {
   player1 = true;
@@ -114,6 +114,11 @@ const joinRoom = (roomID) => {
   socket.emit("joinRoom", roomID);
 };
 
+socket.on("firstPlayer", () => {
+  alert('First Player');
+  player1 = true;
+})
+
 socket.on("playersConnected", () => {
   alert('Players Connected');
   joinPage.classList.add("none");
@@ -125,8 +130,10 @@ socket.on("playersConnected", () => {
 const clickChoice = (rpschoice) => {
   let player;
   if (player1 == true) {
+    alert('p1Choice');
     player = "p1Choice";
   } else if (player1 == false) {
+    alert('p2Choice');
     player = "p2Choice";
   }
 
