@@ -62,7 +62,6 @@ function joinRoom(socket, roomID) {
   
     socket.to(roomID).emit("playersConnected");
     socket.emit("playersConnected");
-    console.log("Players connected");
   }
 
 }
@@ -86,12 +85,9 @@ io.on("connection", (socket) => {
   });
 
   socket.on("p1Choice", (data) => {
-    console.log(data);
     if (data) {
       const choice = data.rpschoice;
       const roomID = data.roomID;
-      console.log('Room ID: ', roomID);
-      console.log(room[roomID]);
       room[roomID].p1Choice = choice;
       socket
         .to(roomID)
@@ -119,6 +115,7 @@ io.on("connection", (socket) => {
   socket.on("playerClicked", (data) => {
     const roomID = data.roomID;
     room[roomID].p1Choice = null;
+    room[roomID].p2Choice = null;
     return socket.to(roomID).emit("playAgain");
   });
 
