@@ -59,7 +59,7 @@ bot.on('chosen_inline_result', async(ctx) => {
     const fromId = ctx.chosenInlineResult.from.id;
     createRoom(roomID)
     const messageID = ctx.chosenInlineResult.inline_message_id;
-    const gameName = "RPSGame"
+    const gameName = "rps_game"
     const gameUrl = `https://t.me/${bot.botInfo.username}/${gameName}?startapp=${roomID}`;
     // await ctx.telegram.sendMessage(fromId, `Room created with ID: ${roomID}, Please join to start a game`, {
     //     parse_mode: "Markdown",
