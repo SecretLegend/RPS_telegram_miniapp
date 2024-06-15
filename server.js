@@ -31,7 +31,7 @@ const io = new Server(server);
 
 let room = [];
 
-// bot.launch()
+bot.launch()
 
 function createRoom(socket, roomID) {
   room[roomID] = { p1Choice: null, p1Score: 0 };
