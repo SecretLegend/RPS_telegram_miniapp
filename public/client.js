@@ -72,6 +72,7 @@ closeRules.addEventListener("click", () => {
 
 window.addEventListener("load", () => {
   console.log('Web app loaded');
+  alert(window.location.href);
   const queryParams = new URLSearchParams(window.location.search);
   const roomID = queryParams.get('startapp');
   alert(roomID);
