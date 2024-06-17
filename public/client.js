@@ -77,8 +77,8 @@ let player1Score = 0;
 let player2Score = 0;
 
 ///Socket
-// const socket = io.connect( "https://rock-paper-scissor-six-gamma.vercel.app/", { secure: true, transports: [ "flashsocket","polling","websocket" ] } );
 const socket = io.connect( "https://busy-clareta-ultrashiny-9e6e3029.koyeb.app/", { secure: true, transports: [ "flashsocket","polling","websocket" ] } );
+// const socket = io.connect( "http://localhost:3000/", { secure: true, transports: [ "flashsocket","polling","websocket" ] } );
 
 window.addEventListener("load", function() {
   const queryParams = new URLSearchParams(window.location.search);
@@ -303,6 +303,7 @@ const returnToLogin = () => {
 }
 
 const exitGame =  () => {
+  window.telegram.WebApp.close();
   socket.emit('exitGame', {roomID : roomID, player : player1});
   // returnToLogin();
 };

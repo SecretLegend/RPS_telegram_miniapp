@@ -16,14 +16,6 @@ app.use(express.static(path.join(__dirname, "images")));
 
 app.get("/", (req, res, next) => {
   res.sendFile(path.join(__dirname, "index.html"));
-  // console.log(req.query)
-  // let roomID = req.query.tgWebAppStartParam;
-  // if ( roomID ) {
-  //   joinRoom(socket, roomID)
-  // }
-  // else {
-  //   console.log('This room is not available!')
-  // }
 });
 
 const server = app.listen(PORT);
@@ -73,6 +65,7 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log("Client disconnected");
+    socket.broadcast.emit('clientDisconnected', { roomID: socket.roomID, messageID: socket.messageID });
   });
 
   socket.on("createRoom", (roomID) => {
