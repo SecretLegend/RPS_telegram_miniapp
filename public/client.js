@@ -11,15 +11,12 @@ const oppoTitle = document.querySelector('.opponents__result');
 const rulesBoard = document.querySelector(".rules");
 const showRulesBoard = document.querySelector(".show__result_board");
 
-const gameFooter = document.querySelector('.footer');
-
 const resultBoard = document.querySelector(".result__board");
 const oppoChoice = document.querySelector(".oppo__choice");
 const yourChoice = document.querySelector(".your__choice");
 
 const results = document.querySelector(".results");
 const resultsHeading = document.querySelector(".results__heading");
-const resultButton = document.querySelector(".results__button");
 
 const joinPage = document.querySelector(".join");
 const roomId = document.getElementById("room-id");
@@ -110,7 +107,6 @@ socket.on("playersConnected", () => {
   joinPage.classList.add("none");
   header.classList.add("flex");
   gameArea.classList.add("grid");
-  gameFooter.classList.add("flex");
 });
 
 const clickChoice = (rpschoice) => {
@@ -205,34 +201,30 @@ socket.on("winner", data => {
   } else if (data == "p1") {
     if (player1) {
       resultsHeading.innerText = "YOU WIN";
-      resultButton.style.color = "#0D9276";
       yourChoice.classList.add("winner");
       player1Score = player1Score + 1;
       updateScore(player1Score, player2Score) 
     } else {
       resultsHeading.innerText = "YOU LOSE";
-      resultButton.style.color = "#FF004D";
       oppoChoice.classList.add("winner");
     }
   } else if (data == "p2") {
     if (!player1) {
       resultsHeading.innerText = "YOU WIN";
-      resultButton.style.color = "#0D9276";
       yourChoice.classList.add("winner");
       player2Score = player2Score + 1;
       updateScore(player1Score, player2Score); 
     } else {
       resultsHeading.innerText = "YOU LOSE";
-      resultButton.style.color = "#FF004D";
       oppoChoice.classList.add("winner");
     }
   }
-  setTimeout(() => {
-    playAgain();
-  }, 3000);
   resultBoard.classList.add("after-choosing");
   results.classList.remove("none");
   results.classList.add("grid");
+  setTimeout(() => {
+    playAgain();
+  }, 3000);
 });
 
 const returnToGame = () => {
@@ -287,8 +279,8 @@ const returnToLogin = () => {
   header.classList.add("none");
   gameArea.classList.remove("grid");
   gameArea.classList.add("none");
-  gameFooter.classList.remove("flex");
-  gameFooter.classList.add("none");
+  // gameFooter.classList.remove("flex");
+  // gameFooter.classList.add("none");
   resultBoard.classList.remove("grid");
   resultBoard.classList.add("none");
 }

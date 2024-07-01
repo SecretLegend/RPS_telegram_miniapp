@@ -272,7 +272,8 @@ body {
   grid-template-columns: repeat(2, 1fr);
   grid-template-areas:
     "your-text oppo-text"
-    "your-choice oppo-choice";
+    "your-choice oppo-choice"
+    "results results";
   height: fit-content;
   gap: 1rem;
   width: 100%;
