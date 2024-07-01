@@ -223,12 +223,15 @@ socket.on("winner", data => {
   if ( player1Score == 3 || player2Score == 3 ) {
     resultButton.classList.add('block')
   }
+  else {
+    setTimeout(() => {
+      playAgain();
+    }, 3000);
+  }
   resultBoard.classList.add("after-choosing");
   results.classList.remove("none");
   results.classList.add("grid");
-  setTimeout(() => {
-    playAgain();
-  }, 3000);
+
 });
 
 const returnToGame = () => {
