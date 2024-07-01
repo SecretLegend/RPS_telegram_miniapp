@@ -8,11 +8,8 @@ const scoreNum = document.querySelector(".score__number");
 
 const oppoTitle = document.querySelector('.opponents__result');
 
-const exitBtn = document.querySelector('.exit__btn');
-const rulesBtn = document.querySelector(".rules__button");
 const rulesBoard = document.querySelector(".rules");
 const showRulesBoard = document.querySelector(".show__result_board");
-const closeRules = document.querySelector(".close-btn");
 
 const gameFooter = document.querySelector('.footer');
 
@@ -61,14 +58,6 @@ const scissorChoice = `
         </div>
     </button>
 `;
-rulesBtn.addEventListener("click", () => {
-  rulesBoard.classList.toggle("show__rules_board");
-  closeRules.style.cursor = "pointer";
-});
-
-closeRules.addEventListener("click", () => {
-  rulesBoard.classList.toggle("show__rules_board");
-});
 
 let roomID;
 let player1 = false;
