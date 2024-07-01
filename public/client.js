@@ -238,7 +238,9 @@ socket.on("winner", data => {
       oppoChoice.classList.add("winner");
     }
   }
-  
+  setTimeout(() => {
+    playAgain();
+  }, 3000);
   resultBoard.classList.add("after-choosing");
   results.classList.remove("none");
   results.classList.add("grid");

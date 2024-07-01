@@ -36,6 +36,7 @@ body {
   padding: 1rem;
   height: 100%;
   max-width: 700px;
+  overflow: hidden;
 }
 
 /* display flex */
