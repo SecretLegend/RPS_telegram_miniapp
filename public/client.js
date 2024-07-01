@@ -17,6 +17,7 @@ const yourChoice = document.querySelector(".your__choice");
 
 const results = document.querySelector(".results");
 const resultsHeading = document.querySelector(".results__heading");
+const resultButton = document.querySelector(".results__button");
 
 const joinPage = document.querySelector(".join");
 const roomId = document.getElementById("room-id");
@@ -219,6 +220,9 @@ socket.on("winner", data => {
       oppoChoice.classList.add("winner");
     }
   }
+  if ( player1Score == 3 || player2Score == 3 ) {
+    resultButton.classList.add('block')
+  }
   resultBoard.classList.add("after-choosing");
   results.classList.remove("none");
   results.classList.add("grid");
@@ -257,6 +261,13 @@ const removeWinner = () => {
   }
 
 };
+
+const restartGame = () => {
+  player1Score = 0;
+  player2Score = 0;
+  updateScore(player1Score, player2Score);
+  playAgain();
+}
 
 const playAgain = () => {
   socket.emit("playerClicked", {

@@ -339,7 +339,7 @@ body {
 }
 
 .results__button {
-  display: block;
+  display: none;
   background-color: #fff;
   padding: 1rem 1rem;
   border-radius: 10px;
