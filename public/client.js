@@ -271,6 +271,7 @@ const removeWinner = () => {
 };
 
 const restartGame = () => {
+  console.log('Restart clicked');
   socket.emit("restartClicked", {
     roomID: roomID
   });
