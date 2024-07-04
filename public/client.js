@@ -197,6 +197,7 @@ const updateScore = (p1Score, p2Score) => {
 
 socket.on("winner", data => {
   winner = data;
+  console.log('Winnerrrrrrrrrrrr!');
   if (data == "draw") {
     resultsHeading.innerText = "DRAW";
     setTimeout(() => {
