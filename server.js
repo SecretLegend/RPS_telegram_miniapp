@@ -105,12 +105,18 @@ io.on("connection", (socket) => {
     }
   });
 
+
+
   socket.on("playerClicked", (data) => {
     const roomID = data.roomID;
     room[roomID].p1Choice = null;
     room[roomID].p2Choice = null;
     return socket.to(roomID).emit("playAgain");
   });
+
+  socket.on("restartClicked", (data) => {
+    return socket.to(data.roomID).emit("restartGame");
+  })
 
   socket.on("exitGame", (data) => {
     const roomID = data.roomID;
