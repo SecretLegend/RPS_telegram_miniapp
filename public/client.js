@@ -199,6 +199,9 @@ socket.on("winner", data => {
   winner = data;
   if (data == "draw") {
     resultsHeading.innerText = "DRAW";
+    setTimeout(() => {
+      playAgain();
+    }, 3000);
   } else if (data == "p1") {
     if (player1) {
       resultsHeading.innerText = "YOU WIN";
