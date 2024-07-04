@@ -200,9 +200,6 @@ socket.on("winner", data => {
   console.log('Winnerrrrrrrrrrrr!');
   if (data == "draw") {
     resultsHeading.innerText = "DRAW";
-    setTimeout(() => {
-      playAgain();
-    }, 3000);
   } else if (data == "p1") {
     if (player1) {
       resultsHeading.innerText = "YOU WIN";
@@ -212,14 +209,6 @@ socket.on("winner", data => {
     } else {
       resultsHeading.innerText = "YOU LOSE";
       oppoChoice.classList.add("winner");
-    }
-    if ( player1Score == 3 ) {
-      resultButton.classList.add('block')
-    }
-    else {
-      setTimeout(() => {
-        playAgain();
-      }, 3000);
     }
   } else if (data == "p2") {
     if (!player1) {
@@ -231,14 +220,16 @@ socket.on("winner", data => {
       resultsHeading.innerText = "YOU LOSE";
       oppoChoice.classList.add("winner");
     }
-    if ( player2Score == 3 ) {
-      resultButton.classList.add('block')
-    }
-    else {
-      setTimeout(() => {
-        playAgain();
-      }, 3000);
-    }
+  }
+  if ( player1Score == 3 || player2Score == 3 ) {
+    console.log('Congratulations!')
+    resultButton.classList.add('block')
+  } 
+  else {
+    console.log('Why here even 3?');
+    setTimeout(() => {
+      playAgain();
+    }, 3000);
   }
   resultBoard.classList.add("after-choosing");
   results.classList.remove("none");
