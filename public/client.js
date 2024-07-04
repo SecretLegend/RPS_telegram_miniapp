@@ -221,6 +221,8 @@ socket.on("winner", data => {
       oppoChoice.classList.add("winner");
     }
   }
+  console.log('Player1Score: ', player1Score);
+  console.log('Player2Score: ', player2Score);
   if ( player1Score == 3 || player2Score == 3 ) {
     console.log('Congratulations!')
     resultButton.classList.add('block')
