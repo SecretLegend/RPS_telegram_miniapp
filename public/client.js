@@ -271,10 +271,13 @@ const removeWinner = () => {
 };
 
 const restartGame = () => {
-  console.log('Restart clicked');
   socket.emit("restartClicked", {
     roomID: roomID
   });
+  player1Score = 0;
+  player2Score = 0;
+  updateScore(player1Score, player2Score);
+  playAgain();
   // playAgain();
 }
 
