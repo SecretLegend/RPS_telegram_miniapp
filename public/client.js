@@ -201,20 +201,20 @@ socket.on("winner", data => {
   if (data == "draw") {
     resultsHeading.innerText = "DRAW";
   } else if (data == "p1") {
+    player1Score = player1Score + 1;
     if (player1) {
       resultsHeading.innerText = "YOU WIN";
       yourChoice.classList.add("winner");
-      player1Score = player1Score + 1;
       updateScore(player1Score, player2Score) 
     } else {
       resultsHeading.innerText = "YOU LOSE";
       oppoChoice.classList.add("winner");
     }
   } else if (data == "p2") {
+    player2Score = player2Score + 1;
     if (!player1) {
       resultsHeading.innerText = "YOU WIN";
       yourChoice.classList.add("winner");
-      player2Score = player2Score + 1;
       updateScore(player1Score, player2Score); 
     } else {
       resultsHeading.innerText = "YOU LOSE";
@@ -223,7 +223,7 @@ socket.on("winner", data => {
   }
   console.log('Player1Score: ', player1Score);
   console.log('Player2Score: ', player2Score);
-  if ( player1Score == 3 || player2Score == 3 ) {
+  if ( (player1 && player1Score == 3) || (player2 && player2Score == 3) ) {
     console.log('Congratulations!')
     resultButton.classList.add('block')
   } 
