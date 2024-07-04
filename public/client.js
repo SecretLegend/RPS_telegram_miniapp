@@ -223,7 +223,7 @@ socket.on("winner", data => {
   }
   console.log('Player1Score: ', player1Score);
   console.log('Player2Score: ', player2Score);
-  if ( (player1 && player1Score == 3) || (player2 && player2Score == 3) ) {
+  if ( player1Score == 3 || player2Score == 3 ) {
     console.log('Congratulations!')
     resultButton.classList.add('block')
   } 
