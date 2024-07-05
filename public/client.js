@@ -297,12 +297,15 @@ const playAgain = () => {
   });
   removeWinner();
   returnToGame();
-  resultButton.classList.add('none')
+  resultButton.classList.remove('block');
+  resultButton.classList.add('none');
 };
 
 socket.on("playAgain", () => {
   removeWinner();
   returnToGame();
+  resultButton.classList.remove('block');
+  resultButton.classList.add('none');
 });
 
 const returnToLogin = () => {
