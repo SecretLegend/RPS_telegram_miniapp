@@ -287,6 +287,7 @@ socket.on('restartGame', () => {
   player2Score = 0;
   updateScore(player1Score, player2Score);
   playAgain();
+  
 })
 
 const playAgain = () => {
@@ -296,6 +297,7 @@ const playAgain = () => {
   });
   removeWinner();
   returnToGame();
+  resultButton.classList.add('none')
 };
 
 socket.on("playAgain", () => {
