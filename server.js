@@ -25,15 +25,15 @@ let room = [];
 
 bot.launch()
 
-function createRoom(socket, roomID) {
+function createRoom(socket, roomID, userName) {
   room[roomID] = { p1Choice: null, p1Score: 0 };
   console.log("Room created");
   socket.join(roomID);
-  socket.to(roomID).emit("playersConnected", { roomID: roomID });
-  return socket.emit("firstPlayer");
+  socket.to(roomID).emit("playersConnected", { roomID: roomID});
+  return socket.emit("firstPlayer", {userName: userName});
 }
 
-function joinRoom(socket, roomID) {
+function joinRoom(socket, roomID, userName) {
 
   // if (!io.sockets.adapter.rooms.has(roomID)) {
   //   return socket.emit("Not a ValidToken");
@@ -53,7 +53,7 @@ function joinRoom(socket, roomID) {
     room[roomID] = { p2Choice: null };
   
     socket.to(roomID).emit("playersConnected");
-    socket.emit("playersConnected");
+    socket.emit("playersConnected", {userName: userName});
   }
 
 }
@@ -68,13 +68,13 @@ io.on("connection", (socket) => {
     socket.broadcast.emit('clientDisconnected', { roomID: socket.roomID, messageID: socket.messageID });
   });
 
-  socket.on("createRoom", (roomID) => {
-    createRoom(socket, roomID);
+  socket.on("createRoom", (data) => {
+    createRoom(socket, data.roomID, data.userName);
   });
 
-  socket.on("joinRoom", (roomID) => {
+  socket.on("joinRoom", (data) => {
     console.log("Joined Room");
-    joinRoom(socket, roomID);
+    joinRoom(socket, data.roomID, data.userName);
   });
 
   socket.on("p1Choice", (data) => {

@@ -72,8 +72,14 @@ body {
   font-weight: 600;
 }
 
-.score__number {
-  color: #333;
+.score__number1 {
+  color: var(--from-rock);
+  font-size: 2.5rem;
+  font-weight: 600;
+}
+
+.score__number2 {
+  color: var(--from-paper);
   font-size: 2.5rem;
   font-weight: 600;
 }

@@ -4,6 +4,8 @@ const paper = document.querySelector(".choice__paper");
 const scissor = document.querySelector(".choice__scissor");
 
 const header = document.querySelector(".header");
+const scoreTitleUser1 = document.querySelector(".username1");
+const scoreTitleUser2 = document.querySelector(".username2");
 const scoreNum1 = document.querySelector(".score__number1");
 const scoreNum2 = document.querySelector(".score__number2");
 
@@ -59,6 +61,7 @@ const scissorChoice = `
 `;
 
 let roomID;
+let userName1, userName2;
 let player1 = false;
 let winner;
 let player1Score = 0;
@@ -72,18 +75,20 @@ window.addEventListener("load", function() {
   const queryParams = new URLSearchParams(window.location.search);
   alert(window.location)
   roomID = queryParams.get('tgWebAppStartParam');
+  userName1 = queryParams.get('username');
+  console.log(userName1);
   if (roomID) {
-    joinRoom(roomID);
+    joinRoom(roomID, userName1);
   }
 })
 
 const createRoom = () => {
   player1 = true;
   roomID = Math.random().toString(36);
-  socket.emit("createRoom", roomID);
+  socket.emit("createRoom", {roomID: roomID, userName: userName1});
 };
 
-const joinRoom = (roomID) => {
+const joinRoom = (roomID, userName) => {
   // roomID = roomId.value;
   if (!roomID) {
     alert("Room Token is Required ");
@@ -99,17 +104,21 @@ const joinRoom = (roomID) => {
     return joinPage.classList.add('flex');
   })
 
-  socket.emit("joinRoom", roomID);
+  socket.emit("joinRoom", {roomID: roomID, userName: userName});
 };
 
-socket.on("firstPlayer", () => {
+socket.on("firstPlayer", (data) => {
   player1 = true;
+  scoreTitleUser1.innerText = data.userName;
+  console.log('Firstplayer: ', data.userName);
 })
 
-socket.on("playersConnected", () => {
+socket.on("playersConnected", (data) => {
   joinPage.classList.add("none");
   header.classList.add("flex");
   gameArea.classList.add("grid");
+  console.log('Secondplayer: ', data.userName);
+  scoreTitleUser2.innerText = data.userName;
 });
 
 const clickChoice = (rpschoice) => {
