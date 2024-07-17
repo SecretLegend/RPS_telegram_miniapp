@@ -76,6 +76,7 @@ window.addEventListener("load", function() {
   alert(window.location)
   roomID = queryParams.get('tgWebAppStartParam');
   userName1 = queryParams.get('username');
+  alert(userName1);
   console.log(userName1);
   if (roomID) {
     joinRoom(roomID, userName1);

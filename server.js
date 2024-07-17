@@ -40,7 +40,7 @@ function joinRoom(socket, roomID, userName) {
   // }
   
   if (!io.sockets.adapter.rooms.has(roomID)) {
-    createRoom(socket, roomID);
+    createRoom(socket, roomID, userName);
   }
 
   else {
