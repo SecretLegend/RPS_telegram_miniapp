@@ -4,7 +4,8 @@ const paper = document.querySelector(".choice__paper");
 const scissor = document.querySelector(".choice__scissor");
 
 const header = document.querySelector(".header");
-const scoreNum = document.querySelector(".score__number");
+const scoreNum1 = document.querySelector(".score__number1");
+const scoreNum2 = document.querySelector(".score__number2");
 
 const oppoTitle = document.querySelector('.opponents__result');
 
@@ -69,6 +70,7 @@ const socket = io.connect( "https://busy-clareta-ultrashiny-9e6e3029.koyeb.app/"
 
 window.addEventListener("load", function() {
   const queryParams = new URLSearchParams(window.location.search);
+  alert(window.location)
   roomID = queryParams.get('tgWebAppStartParam');
   if (roomID) {
     joinRoom(roomID);
@@ -185,14 +187,15 @@ socket.on("p2Choice", (data) => {
 });
 
 const updateScore = (p1Score, p2Score) => {
+  // scoreNum1.innerText = p1Score;
+  // scoreNum2.innerText = p2Score;
   if(player1){
-    scoreNum.innerText = p1Score;
+    scoreNum1.innerText = p1Score;
   }
 
   if(!player1){
-    scoreNum.innerText = p2Score;
+    scoreNum2.innerText = p2Score;
   }
-  
 }
 
 socket.on("winner", data => {
