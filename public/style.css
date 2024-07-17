@@ -274,7 +274,7 @@ body {
     "your-text oppo-text"
     "your-choice oppo-choice"
     "results results";
-  height: fit-content;
+  /* height: fit-content; */
   gap: 1rem;
   width: 100%;
   margin: 2.5rem auto;
